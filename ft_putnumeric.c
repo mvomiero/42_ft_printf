@@ -1,36 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putalpha.c                                      :+:      :+:    :+:   */
+/*   ft_putnumeric.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/15 17:16:18 by mvomiero          #+#    #+#             */
-/*   Updated: 2022/12/15 18:00:49 by mvomiero         ###   ########.fr       */
+/*   Created: 2022/12/15 17:58:02 by mvomiero          #+#    #+#             */
+/*   Updated: 2022/12/15 18:21:26 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putchar_c_len(char c, int *len)
+void	ft_putnbr_d_i(int nb, int *len)
 {
-	write(1, &c, 1);
-	(*len)++;
-}
-
-void	ft_putstr_s(char *str, int *len)
-{
-	size_t	i;
-
-	i = 0;
-	if (!str)
+	if (nb == INT_MIN)
 	{
-		write(1, "(null)", 6);
-		*len += 6;
+		write(1, "-2147483648", 1);
+		*len += 11;
+	}
+	else if (nb < 0)
+	{
+		ft_putchar_c_len('-', len);
+		ft_putnbr_d_i(-nb, len);
 	}
 	else
 	{
-		ft_putchar_c_len(str[i], len);
-		i++;
+		if (nb > 9)
+			ft_putnbr_d_i(nb / 10, len);
+		ft_putchar_c_len(nb % 10 + '0', len)
 	}
+}
+
+void	ft_putnbr_unsigned_u(unsigned int nb, int *len)
+{
+	if (nb > 9)
+		ft_putnbr_unsigned_u(nb / 10, len);
+	ft_putchar_c_len(nb % 10 + '0', len);
 }
