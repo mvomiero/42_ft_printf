@@ -1,37 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putalpha.c                                      :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/15 17:16:18 by mvomiero          #+#    #+#             */
-/*   Updated: 2022/12/16 13:49:13 by mvomiero         ###   ########.fr       */
+/*   Created: 2022/12/16 12:16:03 by mvomiero          #+#    #+#             */
+/*   Updated: 2022/12/16 13:13:53 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putchar_c_len(char c, int *len)
-{
-	write(1, &c, 1);
-	(*len)++;
-}
+#include <stdio.h>
+#include <limits.h>
 
-void	ft_putstr_s(char *str, int *len)
+int main(void)
 {
-	size_t	i;
+	void *ptr = 0;
 
-	i = 0;
-	if (!str)
-	{
-		write(1, "(null)", 6);
-		*len += 6;
-		return ;
-	}
-	while (str[i])
-	{
-		ft_putchar_c_len(str[i], len);
-		i++;
-	}
+    printf("%p\n", ptr);
+    printf("%u\n", UINT_MAX);
+    printf("%lu\n", ULONG_MAX);
+    printf("%lx\n", ULONG_MAX);
+    printf("%x\n", UINT_MAX);
+
+	printf("ciao %s oggi e il n %d\n", "Marco", 16);
+	ft_printf("ciao %s oggi e il n %d\n", "Marco", 16);
 }

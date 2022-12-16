@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 17:58:02 by mvomiero          #+#    #+#             */
-/*   Updated: 2022/12/15 18:21:26 by mvomiero         ###   ########.fr       */
+/*   Updated: 2022/12/16 13:47:54 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,11 @@ void	ft_putnbr_d_i(int nb, int *len)
 {
 	if (nb == INT_MIN)
 	{
-		write(1, "-2147483648", 1);
+		write(1, "-2147483648", 11);
 		*len += 11;
+		return;
 	}
-	else if (nb < 0)
+	if (nb < 0)
 	{
 		ft_putchar_c_len('-', len);
 		ft_putnbr_d_i(-nb, len);
@@ -28,9 +29,30 @@ void	ft_putnbr_d_i(int nb, int *len)
 	{
 		if (nb > 9)
 			ft_putnbr_d_i(nb / 10, len);
-		ft_putchar_c_len(nb % 10 + '0', len)
+		ft_putchar_c_len(nb % 10 + '0', len);
 	}
 }
+
+/* void	ft_putnbr_d_i(int number, int *length)
+{
+	if (number == -2147483648)
+	{
+		write(1, "-2147483648", 11);
+		(*length) += 11;
+		return ;
+	}
+	if (number < 0)
+	{
+		ft_putchar_c_len('-', length);
+		ft_putnbr_d_i(number * -1, length);
+	}
+	else
+	{
+		if (number > 9)
+			ft_putnbr_d_i(number / 10, length);
+		ft_putchar_c_len(number % 10 + '0', length);
+	}
+} */
 
 void	ft_putnbr_unsigned_u(unsigned int nb, int *len)
 {
@@ -38,3 +60,58 @@ void	ft_putnbr_unsigned_u(unsigned int nb, int *len)
 		ft_putnbr_unsigned_u(nb / 10, len);
 	ft_putchar_c_len(nb % 10 + '0', len);
 }
+
+// you first go to the end, then you decrese the i. If not th function
+// was too long
+
+void	ft_putptr_p(unsigned long ptr, int *len)
+{
+	char	str[25];
+	int		i;
+	char	*base_char;
+
+	i = 0;
+	base_char = "0123456789abcdef";
+	write(1, "0x", 2);
+	*len += 2;
+	if (ptr == 0)
+	{
+		ft_putchar_c_len('0', len);
+		return ;
+	}
+	while (ptr)
+	{
+		str[i] = base_char[ptr % 16];
+		ptr /= 16;
+		i++;
+	}
+	while (i--)
+		ft_putchar_c_len(str[i], len);
+}
+
+void	ft_puthex_xX(unsigned int hex, int *len, char format)
+{
+	char	str[25];
+	int		i;
+	char	*base_char;
+
+	i = 0;
+	if (format == 'x')
+		base_char = "0123456789abcdef";
+	else
+		base_char = "0123456789ABCDEF";
+	if (hex == 0)
+	{
+		ft_putchar_c_len('0', len);
+		return ;
+	}
+	while (hex)
+	{
+		str[i] = base_char[hex % 16];
+		hex /= 16;
+		i++;
+	}
+	while (i--)
+		ft_putchar_c_len(str[i], len);
+}
+
