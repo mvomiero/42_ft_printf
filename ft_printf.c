@@ -6,14 +6,14 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 16:16:53 by mvomiero          #+#    #+#             */
-/*   Updated: 2022/12/19 17:08:16 by mvomiero         ###   ########.fr       */
+/*   Updated: 2022/12/19 18:36:37 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-//p = va_arg(args, unsigned long)# or 
-//                               #(unsigned long)va_arg(args, void *);
+// just for the data type of pointer p = va_arg(args, unsigned long) or 
+// (unsigned long)va_arg(args, void *);
 
 static	void	ft_printf_len_exec(char c, va_list *args, int *len, int *i)
 {
@@ -55,10 +55,61 @@ int	ft_printf(const char *str, ...)
 		}
 		else
 		{
-			ft_putchar_c_len((char)str[i], &len);
+			ft_putchar_c_len(str[i], &len);
 			i++;
 		}
 	}
 	va_end(args);
 	return (len);
 }
+
+/*
+
+// THIS IS A MAIN FILE I COULD USE TO TEST THE PROGRAM
+
+#include "ft_printf.h"
+
+#include <stdio.h>
+#include <limits.h>
+
+int main(void)
+{
+	void *ptr;
+
+	printf("%p\n", ptr);
+	ft_printf("%p\n\n", ptr);
+
+    printf("%u\n", UINT_MAX);
+    ft_printf("%u\n\n", UINT_MAX);
+
+    printf("%x\n", 12565);
+    ft_printf("%x\n\n", 12565);
+	
+    printf("%x\n", 12565);
+    ft_printf("%x\n\n", 12565);
+
+	printf("ciao %s oggi e il n %d\n", "Marco", 16);
+	ft_printf("ciao %s oggi e il n %d\n\n", "Marco", 16);
+
+	printf("originale  %p %p \n", 0, 0);
+	ft_printf("mio  %p %p \n\n", 0, 0);
+} */
+
+/* 	
+
+// SOME PARTICLUAR CASES...TOO DIFFICULT TO HANDLE 
+// so I didnt do them
+
+	// Those are the cases with the flags, quite complicated thats why I dont
+	// use them 
+
+	printf( "%12d\n", 452 );
+	printf( "%9d\n", 452 );
+	printf( "%+9d\n", 452 );
+	printf( "%+d\n", 452 );
+	printf( "%+09d\n", 452 );
+    printf( "%09d\n", 452 );
+    printf( "% 9d\n", 452 );
+	printf("Prova %0d, zero\n", 12);
+	printf("Prova %.21d, precision\n", 23);
+	printf("Prova%        d,\n", 23); */

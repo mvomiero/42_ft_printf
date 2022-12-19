@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 16:17:22 by mvomiero          #+#    #+#             */
-/*   Updated: 2022/12/19 17:03:21 by mvomiero         ###   ########.fr       */
+/*   Updated: 2022/12/19 18:39:58 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <stdarg.h>
 # include <unistd.h>
-# include <stdlib.h>
 # include <limits.h>
 
 int		ft_printf(const char *str, ...);
