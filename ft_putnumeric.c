@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 17:58:02 by mvomiero          #+#    #+#             */
-/*   Updated: 2022/12/19 13:26:02 by mvomiero         ###   ########.fr       */
+/*   Updated: 2022/12/19 17:03:30 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_putnbr_d_i(int nb, int *len)
 	{
 		write(1, "-2147483648", 11);
 		*len += 11;
-		return;
+		return ;
 	}
 	if (nb < 0)
 	{
@@ -114,7 +114,7 @@ void	ft_putptr_p(unsigned long ptr, int *len)
 		ft_putchar_c_len(str[i], len);
 } */
 
-void	ft_puthex_xX(unsigned int hex, int *len, char format)
+void	ft_puthex_xx(unsigned int hex, int *len, char format)
 {
 	char	str[25];
 	int		i;
@@ -139,4 +139,3 @@ void	ft_puthex_xX(unsigned int hex, int *len, char format)
 	while (i--)
 		ft_putchar_c_len(str[i], len);
 }
-

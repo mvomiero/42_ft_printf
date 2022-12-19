@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 16:16:53 by mvomiero          #+#    #+#             */
-/*   Updated: 2022/12/16 13:41:24 by mvomiero         ###   ########.fr       */
+/*   Updated: 2022/12/19 17:08:16 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,18 +28,16 @@ static	void	ft_printf_len_exec(char c, va_list *args, int *len, int *i)
 	else if (c == 'p')
 		ft_putptr_p(va_arg(*args, unsigned long), len);
 	else if (c == 'x')
-		ft_puthex_xX(va_arg(*args, unsigned int), len, 'x');
+		ft_puthex_xx(va_arg(*args, unsigned int), len, 'x');
 	else if (c == 'X')
-		ft_puthex_xX(va_arg(*args, unsigned int), len, 'X');
+		ft_puthex_xx(va_arg(*args, unsigned int), len, 'X');
 	else if (c == '%')
 		ft_putchar_c_len('%', len);
 	else
 		(*i)--;
-
-
 }
 
-int ft_printf(const char *str, ...)
+int	ft_printf(const char *str, ...)
 {
 	va_list	args;
 	int		i;
@@ -52,8 +50,7 @@ int ft_printf(const char *str, ...)
 	{
 		if (str[i] == '%')
 		{
-			i++;
-			ft_printf_len_exec(str[i], &args, &len, &i);
+			ft_printf_len_exec(str[++i], &args, &len, &i);
 			i++;
 		}
 		else
