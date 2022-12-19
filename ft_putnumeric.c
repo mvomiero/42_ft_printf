@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 17:58:02 by mvomiero          #+#    #+#             */
-/*   Updated: 2022/12/16 13:47:54 by mvomiero         ###   ########.fr       */
+/*   Updated: 2022/12/19 13:26:02 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,31 @@ void	ft_putptr_p(unsigned long ptr, int *len)
 
 	i = 0;
 	base_char = "0123456789abcdef";
+	if (ptr == 0)
+	{
+		ft_putstr_s("(nil)", len);
+		return ;
+	}
+	write(1, "0x", 2);
+	*len += 2;
+	while (ptr)
+	{
+		str[i] = base_char[ptr % 16];
+		ptr /= 16;
+		i++;
+	}
+	while (i--)
+		ft_putchar_c_len(str[i], len);
+}
+
+/* void	ft_putptr_p(unsigned long ptr, int *len)
+{
+	char	str[25];
+	int		i;
+	char	*base_char;
+
+	i = 0;
+	base_char = "0123456789abcdef";
 	write(1, "0x", 2);
 	*len += 2;
 	if (ptr == 0)
@@ -87,7 +112,7 @@ void	ft_putptr_p(unsigned long ptr, int *len)
 	}
 	while (i--)
 		ft_putchar_c_len(str[i], len);
-}
+} */
 
 void	ft_puthex_xX(unsigned int hex, int *len, char format)
 {
