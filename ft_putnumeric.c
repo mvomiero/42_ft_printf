@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 17:58:02 by mvomiero          #+#    #+#             */
-/*   Updated: 2022/12/19 17:16:29 by mvomiero         ###   ########.fr       */
+/*   Updated: 2022/12/19 18:45:29 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	ft_putnbr_unsigned_u(unsigned int nb, int *len)
 
 void	ft_putptr_p(unsigned long ptr, int *len)
 {
-	char	str[25];
+	char	str[20];
 	int		i;
 	char	*base_char;
 
@@ -70,7 +70,7 @@ void	ft_putptr_p(unsigned long ptr, int *len)
 
 void	ft_puthex_xx(unsigned int hex, int *len, char format)
 {
-	char	str[25];
+	char	str[20];
 	int		i;
 	char	*base_char;
 
